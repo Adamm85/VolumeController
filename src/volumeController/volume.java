@@ -48,7 +48,7 @@ public class volume {
 	}
 	
 	// Set volume to the value of the task if it possible
-	public int setVolume(){
+	public int setVolume() {
 		if(volumeRange() == false) {				
 			return setVolume = actualVolumee;
 		}
@@ -63,69 +63,57 @@ public class volume {
 				return true;
 		}
 		
-		public void showVolumeChange() throws InterruptedException {
-			if(setVolume() < actualVolumee) {
-				for (i = actualVolumee; i >= setVolume(); i--)	{
-					if(actualVolumee >= 0) {
-						Thread.sleep(20);
-						System.out.print(i + " ");
-						actualVolumee = i;
-					}
-				}
-			}
-			if(setVolume() > actualVolumee) {
-				for (i = actualVolumee; i <= setVolume(); i++) {
+	public void showVolumeChange() throws InterruptedException {
+		if(setVolume() < actualVolumee) {
+			for (i = actualVolumee; i >= setVolume(); i--)	{
+				if(actualVolumee >= 0) {
 					Thread.sleep(20);
 					System.out.print(i + " ");
 					actualVolumee = i;
 				}
-		    } 
-		}			
-		
-		// Methods display the message depending on the condition
-		public void currVolInformation() {
-			if(volumeRange() == true & isInt == true & !exit.equals("exit"))
-				System.out.println("The current volume is set to: " + actualVolume());
-		}
-		
-		public void checkVolRange() {
-			if(volumeRange() == false & !exit.equals("exit"))
-				System.out.println("\n*****Error***** You went beyond the regulation range *****\n");
-			else if(volumeRange() == true & isInt == true & !exit.equals("exit"))
-				System.out.println("\nSet the volume to: " + setVolume() + "\n");
-		}
-		
-		public void confVolSetting() {
-			if(volumeRange() == true & isInt == true & !exit.equals("exit"))
-				System.out.println("\n\nI confirm the volume setting on: " + actualVolumee + "\n");
-
-		}
-		
-		public void exitInfo() {
-			if(exit.equals("exit")) {
-				System.out.println("\nExit");
-			}			
-		}
-		
-		// Exit condition from the program 
-		public String exit()
-		{
-			if( read == -1) {			
-				return exit = "exit";
 			}
-			else
-				return exit;
 		}
+		if(setVolume() > actualVolumee) {
+			for (i = actualVolumee; i <= setVolume(); i++) {
+				Thread.sleep(20);
+				System.out.print(i + " ");
+				actualVolumee = i;
+			}
+	    } 
+	}			
 		
-		//public boolean isInt() {
-		//	try {
-		//		String str = Integer.toString(read);
-		//		Integer.parseInt(str);
-		//	} catch (NumberFormatException e) {
-		//		return false;
-		//	}
-		//	return true;
-		//}
+	// Methods display the message depending on the condition
+	public void currVolInformation() {
+		if(volumeRange() == true & isInt == true & !exit.equals("exit"))
+			System.out.println("The current volume is set to: " + actualVolume());
+	}
+	
+	public void checkVolRange() {
+		if(volumeRange() == false & !exit.equals("exit"))
+			System.out.println("\n*****Error***** You went beyond the regulation range *****\n");
+		else if(volumeRange() == true & isInt == true & !exit.equals("exit"))
+			System.out.println("\nSet the volume to: " + setVolume() + "\n");
+	}
+	
+	public void confVolSetting() {
+		if(volumeRange() == true & isInt == true & !exit.equals("exit"))
+			System.out.println("\n\nI confirm the volume setting on: " + actualVolumee + "\n");
+		}
+	
+	public void exitInfo() {
+		if(exit.equals("exit")) {
+			System.out.println("\nExit");
+		}			
+	}
+	
+	// Exit condition from the program 
+	public String exit() {
+		if( read == -1) {			
+			return exit = "exit";
+		}
+		else
+			return exit;
+	}
+}	
+
 		
-}
-			
