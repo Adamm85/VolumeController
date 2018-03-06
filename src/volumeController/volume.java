@@ -6,14 +6,13 @@ import java.util.Scanner;
 
 public class volume {
 	
-	int actualVolumee = 0;
-	int maxVolumee = 100;
-	int setVolume = 0;	
-	int read = 0;
-	int i = 0;
-	String exit = "";
-	Scanner reader = null;
-	boolean isInt;
+	private int actualVolumee = 0;
+	private int maxVolumee = 100;
+	private int read = 0;
+	private int i = 0;
+	private String exit = "";
+	private Scanner reader = null;
+	private boolean isInt;
 	
 
 	public volume() {}
@@ -49,6 +48,7 @@ public class volume {
 	
 	// Set volume to the value of the task if it possible
 	public int setVolume() {
+		int setVolume;
 		if(volumeRange() == false) {				
 			return setVolume = actualVolumee;
 		}
