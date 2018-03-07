@@ -1,7 +1,6 @@
 package volumeController;
 
 import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class volume {
@@ -36,9 +35,10 @@ public class volume {
 		reader = new Scanner(System.in);
 		try {
 			read = reader.nextInt();			
-		} catch(NoSuchElementException|NumberFormatException ex) {
+		} catch(Exception ex) {
 			isInt = false;
-			System.out.println("\n*****Error***** Wrong type of data or nothing to load *****\n");}
+			System.out.println("\n*****Error***** Wrong type of data or nothing to load *****\n");
+		}
 	}
 	
 	// Return read value by scanner
@@ -48,11 +48,10 @@ public class volume {
 	
 	// Set volume to the value of the task if it possible
 	public int setVolume() {
-		int setVolume;
 		if(volumeRange() == false) {				
-			return setVolume = actualVolumee;
+			return actualVolumee;
 		}
-		return setVolume = inValue();
+		return inValue();
 	}
 	
 	// Check if the given value is outside the scope
