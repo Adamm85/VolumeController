@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 public class volume {
 	
-	private int actualVolumee = 0;
-	private int maxVolumee = 100;
+	private int actualVolume = 0;
+	private int minVolume = 0;
+	private int maxVolume = 100;
 	private int read = 0;
 	private int i = 0;
 	private String exit = "";
@@ -16,17 +17,18 @@ public class volume {
 
 	public volume() {}
 	
-	public volume(int actualVolume, int maxVolume) {
-		actualVolume = actualVolumee;
-		maxVolume = maxVolumee;
+	public volume(int minVol, int maxVol) {
+		minVolume = minVol;
+		maxVolume = maxVol;
+		actualVolume = minVol;
 	}
 	
 	public int actualVolume() {
-		return actualVolumee;
+		return actualVolume;
 	}
 	
 	public int maxVolume() {
-		return maxVolumee;
+		return maxVolume;
 	}
 	
 	// Load value to change volume
@@ -49,34 +51,35 @@ public class volume {
 	// Set volume to the value of the task if it possible
 	public int setVolume() {
 		if(volumeRange() == false) {				
-			return actualVolumee;
+			return actualVolume;
 		}
 		return inValue();
 	}
 	
 	// Check if the given value is outside the scope
 		public boolean volumeRange() {
-			if(inValue() > maxVolumee | inValue() < 0)
+			if(inValue() > maxVolume | inValue() < minVolume)
 				return false;
 			else
 				return true;
 		}
 		
 	public void showVolumeChange() throws InterruptedException {
-		if(setVolume() < actualVolumee) {
-			for (i = actualVolumee; i >= setVolume(); i--)	{
-				if(actualVolumee >= 0) {
-					Thread.sleep(20);
+		int checkVolume = setVolume();
+		if(checkVolume < actualVolume) {
+			for (i = actualVolume; i >= checkVolume; i--)	{
+				if(actualVolume >= minVolume) {
+					Thread.sleep(10);
 					System.out.print(i + " ");
-					actualVolumee = i;
+					actualVolume = i;
 				}
 			}
 		}
-		if(setVolume() > actualVolumee) {
-			for (i = actualVolumee; i <= setVolume(); i++) {
-				Thread.sleep(20);
+		if(checkVolume > actualVolume) {
+			for (i = actualVolume; i <= checkVolume; i++) {
+				Thread.sleep(10);
 				System.out.print(i + " ");
-				actualVolumee = i;
+				actualVolume = i;
 			}
 	    } 
 	}			
@@ -88,7 +91,7 @@ public class volume {
 	}
 	
 	public void checkVolRange() {
-		if(volumeRange() == false & !exit.equals("exit"))
+		if(volumeRange() == false & isInt == true & !exit.equals("exit"))
 			System.out.println("\n*****Error***** You went beyond the regulation range *****\n");
 		else if(volumeRange() == true & isInt == true & !exit.equals("exit"))
 			System.out.println("\nSet the volume to: " + setVolume() + "\n");
@@ -96,7 +99,7 @@ public class volume {
 	
 	public void confVolSetting() {
 		if(volumeRange() == true & isInt == true & !exit.equals("exit"))
-			System.out.println("\n\nI confirm the volume setting on: " + actualVolumee + "\n");
+			System.out.println("\n\nI confirm the volume setting on: " + actualVolume + "\n");
 		}
 	
 	public void exitInfo() {

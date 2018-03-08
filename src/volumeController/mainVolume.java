@@ -7,7 +7,7 @@ public class mainVolume {
 	}
 	
 	public static void main(String[] args) throws InterruptedException {
-		volume volume = new volume();
+		volume volume = new volume(1000, 2000);
 		String leave = volume.exit();
 		while (!leave.equals("exit")) {
 			System.out.println("Adjust the volume:\n");
